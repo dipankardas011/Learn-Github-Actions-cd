@@ -6,13 +6,32 @@ metadata:
   labels:
     app: cicd
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: cicd
   template:
-    containers:
-      - name: golang
-        image: dipugodocker/test-go:1.0
-      - name: C-lang
-        image: dipugodocker/test-c:1.0
+    metadata:
+      labels:
+        app: cicd
+    spec:
+      containers:
+        - name: golang
+          image: dipugodocker/test-go:1.0
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "200Mi"
+            limits:
+              cpu: "800m"
+              memory: "400Mi"
+        - name: c-lang
+          image: dipugodocker/test-c:1.0
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "200Mi"
+            limits:
+              cpu: "800m"
+              memory: "400Mi"
 ...
