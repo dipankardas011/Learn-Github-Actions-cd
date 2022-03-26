@@ -16,8 +16,8 @@ spec:
         app: cicd
     spec:
       containers:
-        - name: golang
-          image: dipugodocker/test-go:1.0
+        - name: mywebSite
+          image: dipugodocker/weatherapp:v2
           resources:
             requests:
               cpu: "500m"
@@ -25,13 +25,15 @@ spec:
             limits:
               cpu: "800m"
               memory: "400Mi"
-        - name: c-lang
-          image: dipugodocker/test-c:1.0
-          resources:
-            requests:
-              cpu: "500m"
-              memory: "200Mi"
-            limits:
-              cpu: "800m"
-              memory: "400Mi"
+          ports:
+            - containerPort: 80
+        # - name: c-lang
+        #   image: dipugodocker/test-c:1.0
+        #   resources:
+        #     requests:
+        #       cpu: "500m"
+        #       memory: "200Mi"
+        #     limits:
+        #       cpu: "800m"
+        #       memory: "400Mi"
 ...
