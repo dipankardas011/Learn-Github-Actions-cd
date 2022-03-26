@@ -16,7 +16,7 @@ spec:
         app: cicd
     spec:
       containers:
-        - name: mywebSite
+        - name: mywebsite
           image: dipugodocker/weatherapp:v2
           resources:
             requests:
@@ -25,15 +25,15 @@ spec:
             limits:
               cpu: "800m"
               memory: "400Mi"
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - /usr/share/nginx/html/index.html
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
           ports:
             - containerPort: 80
-        # - name: c-lang
-        #   image: dipugodocker/test-c:1.0
-        #   resources:
-        #     requests:
-        #       cpu: "500m"
-        #       memory: "200Mi"
-        #     limits:
-        #       cpu: "800m"
-        #       memory: "400Mi"
 ...
