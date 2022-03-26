@@ -1,0 +1,18 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-ci-cd
+  labels:
+    app: cicd
+spec:
+  selector:
+    matchLabels:
+      app: cicd
+  template:
+    containers:
+      - name: golang
+        image: dipugodocker/test-go:1.0
+      - name: C-lang
+        image: dipugodocker/test-c:1.0
+...
